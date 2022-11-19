@@ -7,7 +7,11 @@ export const formatRecords = (records: MRecord[]) => {
   const recordsDate = records.map((item) => item.date);
 
   const markdown = records.length ?
-    recordsDate.map((item) => `**${dayjs(item).format('YYYY年MM月DD日')}**`).join('\n') :
+    recordsDate.map((item, index) => {
+      const number = index + 1;
+      const dateFormat = dayjs(item).format('YYYY / MM / DD');
+      return `${number}: **${dateFormat}**`;
+    }).join('\n') :
     '没有找到经期数据';
   return markdown;
 };
