@@ -34,7 +34,7 @@ bot.command('record', async (ctx) => {
     for (let i = 0; i < recentRecords.length; i += 2) {
       const f = recentRecords[i];
       const s = recentRecords[i + 1];
-      content.push(`${replaceDateReserved(f.date)} 到 ${replaceDateReserved(s.date)} => 距离 **${dateDiffByDay(f.date, s.date)}**`);
+      content.push(`${replaceDateReserved(f.date)} 到 ${replaceDateReserved(s.date)} 距离 **${dateDiffByDay(f.date, s.date)}**`);
     }
     ctx.replyWithMarkdownV2(content.join('\n'));
   } catch (error) {
@@ -53,7 +53,7 @@ bot.command('recent', async (ctx) => {
     for (let i = 0; i < recentRecords.length; i += 2) {
       const f = recentRecords[i];
       const s = recentRecords[i + 1];
-      content.push(`${replaceDateReserved(f.date)} 到 ${replaceDateReserved(s.date)} => 距离 **${dateDiffByDay(f.date, s.date)}**`);
+      content.push(`${replaceDateReserved(f.date)} 到 ${replaceDateReserved(s.date)} 距离 **${dateDiffByDay(f.date, s.date)}**`);
     }
     ctx.replyWithMarkdownV2(content.join('\n'));
   } catch (error) {
