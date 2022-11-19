@@ -3,7 +3,7 @@ import { VercelRequest, VercelResponse } from '@vercel/node';
 import { bot } from '../bot';
 
 export default async (request: VercelRequest, response: VercelResponse) => {
-  console.log('[bot] request body', request);
+  console.log('[bot] request body', request.body);
   try {
     await bot.handleUpdate(request.body);
   } catch(err) {
