@@ -16,9 +16,16 @@ export const formatRecords = (records: MRecord[]) => {
   return markdown;
 };
 
-export const getRecords = async () => {
-  const result = await supabase.from(SUPABASE_RECORDS).select();
+// 获取全部记录
+export const getAllRecords = async () => {
+  const result = await supabase
+    .from(SUPABASE_RECORDS)
+    .select()
+    .order('id', { ascending: true });
   const records: MRecord[] = result.data ?? [];
 
   return records;
 };
+
+// 日期 diff
+export const dateDiffByDay = (f: string, s: string) => Math.abs(dayjs(f).diff(s, 'd'));
