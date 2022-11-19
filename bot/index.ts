@@ -4,7 +4,7 @@ import { Telegraf } from 'telegraf';
 import { MRecord } from './types';
 import { supabase } from './supa';
 import { botToken, SUPABASE_RECORDS, webhook } from './config';
-import { dateDiffByDay, formatRecords, getAllRecords } from './utils';
+import { dateDiffByDay, formatRecords, getAllRecords, replaceDateReserved } from './utils';
 
 export const bot = new Telegraf(botToken);
 
@@ -34,7 +34,7 @@ bot.command('record', async (ctx) => {
     for (let i = 0; i < recentRecords.length; i += 2) {
       const f = recentRecords[i];
       const s = recentRecords[i + 1];
-      content.push(`${f.date} - ${s.date} => 距离 ${dateDiffByDay(f.date, s.date)}`);
+      content.push(`${replaceDateReserved(f.date)} - ${replaceDateReserved(s.date)} => 距离 **${dateDiffByDay(f.date, s.date)}**`);
     }
     ctx.replyWithMarkdownV2(content.join('\n'));
   } catch (error) {
@@ -53,7 +53,7 @@ bot.command('recent', async (ctx) => {
     for (let i = 0; i < recentRecords.length; i += 2) {
       const f = recentRecords[i];
       const s = recentRecords[i + 1];
-      content.push(`${f.date} - ${s.date} => 距离 ${dateDiffByDay(f.date, s.date)}`);
+      content.push(`${replaceDateReserved(f.date)} - ${replaceDateReserved(s.date)} => 距离 **${dateDiffByDay(f.date, s.date)}**`);
     }
     ctx.replyWithMarkdownV2(content.join('\n'));
   } catch (error) {

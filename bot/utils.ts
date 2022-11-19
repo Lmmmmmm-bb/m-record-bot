@@ -29,3 +29,5 @@ export const getAllRecords = async () => {
 
 // 日期 diff
 export const dateDiffByDay = (f: string, s: string) => Math.abs(dayjs(f).diff(s, 'd'));
+
+export const replaceDateReserved = (d: string) => d.replace(/\./g, ' / ');
