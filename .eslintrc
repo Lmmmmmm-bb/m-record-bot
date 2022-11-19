@@ -19,6 +19,7 @@
     "eol-last": "error",
     "prefer-destructuring": "warn",
     "prefer-template": "error",
-    "no-multiple-empty-lines": ["error", { "max": 1 }]
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "arrow-parens": "error"
   }
 }
