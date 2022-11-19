@@ -13,7 +13,9 @@ bot.start((ctx) => {
 bot.command('history', async (ctx) => {
   const result = await supabase.from(SUPABASE_RECORDS).select();
   const records: MRecord[] = result.data ?? [];
-  ctx.replyWithMarkdownV2(records.map((item) => `**${item.date}**`).join('\n'));
+
+  const markdown = records.length ? '暂时没有数据' : records.map((item) => `**${item.date}**`).join('\n');
+  ctx.replyWithMarkdownV2(markdown);
 });
 
 bot.launch({ webhook });
