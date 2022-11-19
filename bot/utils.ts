@@ -1,9 +1,14 @@
 import { MRecord } from './types';
 import { supabase } from './supa';
 import { SUPABASE_RECORDS } from './config';
+import dayjs from 'dayjs';
 
 export const formatRecords = (records: MRecord[]) => {
-  const markdown = records.length ? records.map((item) => `**${item.date}**`).join('\n') : '没有找到经期数据';
+  const recordsDate = records.map((item) => item.date);
+
+  const markdown = records.length ?
+    recordsDate.map((item) => `**${dayjs(item).format('YYYY年MM月DD日')}**`).join('\n') :
+    '没有找到经期数据';
   return markdown;
 };
 

@@ -1,6 +1,7 @@
 import day from 'dayjs';
 import { Telegraf } from 'telegraf';
 
+import { MRecord } from './types';
 import { supabase } from './supa';
 import { formatRecords, getRecords } from './utils';
 import { botToken, SUPABASE_RECORDS, webhook } from './config';
@@ -23,7 +24,8 @@ bot.command('history', async (ctx) => {
 
 bot.command('record', async (ctx) => {
   try {
-    await supabase.from(SUPABASE_RECORDS).insert({ date: day().format('YYYY-MM-DD') });
+    const newRecord: Omit<MRecord, 'id'> = { date: day().format('YYYY-MM-DD') };
+    await supabase.from(SUPABASE_RECORDS).insert(newRecord);
     const records = await getRecords();
     ctx.replyWithMarkdownV2(formatRecords(records));
   } catch(error) {
