@@ -31,10 +31,10 @@ bot.command('record', async (ctx) => {
     const recentRecords = records.slice(-6);
     const content: string[] = [];
 
-    for (let i = 0; i < recentRecords.length; i += 2) {
+    for (let i = 0; i < recentRecords.length - 1; i++) {
       const f = recentRecords[i];
       const s = recentRecords[i + 1];
-      content.push(`${replaceDateReserved(f.date)} 到 ${replaceDateReserved(s.date)} 距离 **${dateDiffByDay(f.date, s.date)}**`);
+      content.push(`${replaceDateReserved(f.date)} 到 ${replaceDateReserved(s.date)} 距离 **${dateDiffByDay(f.date, s.date)}** 天`);
     }
     ctx.replyWithMarkdownV2(content.join('\n'));
   } catch (error) {
@@ -50,10 +50,10 @@ bot.command('recent', async (ctx) => {
     const recentRecords = records.slice(-6);
     const content: string[] = [];
 
-    for (let i = 0; i < recentRecords.length; i += 2) {
+    for (let i = 0; i < recentRecords.length - 1; i++) {
       const f = recentRecords[i];
       const s = recentRecords[i + 1];
-      content.push(`${replaceDateReserved(f.date)} 到 ${replaceDateReserved(s.date)} 距离 **${dateDiffByDay(f.date, s.date)}**`);
+      content.push(`${replaceDateReserved(f.date)} 到 ${replaceDateReserved(s.date)} 距离 **${dateDiffByDay(f.date, s.date)}** 天`);
     }
     ctx.replyWithMarkdownV2(content.join('\n'));
   } catch (error) {
