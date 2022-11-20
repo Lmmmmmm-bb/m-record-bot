@@ -45,7 +45,7 @@ export const replyRecentRecordsContent = async () => {
       content.push('', '距离上个月');
     }
     // eslint-disable-next-line no-useless-escape
-    content.push(`${replaceDateReserved(f.date)} \=> ${replaceDateReserved(s.date)} 距离 **${dateDiffByDay(f.date, s.date)}** 天`);
+    content.push(`${replaceDateReserved(f.date)} \\=> ${replaceDateReserved(s.date)} 距离 **${dateDiffByDay(f.date, s.date)}** 天`);
   }
 
   return content.join('\n');
