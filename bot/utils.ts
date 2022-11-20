@@ -32,3 +32,21 @@ export const getAllRecords = async () => {
 export const dateDiffByDay = (f: string, s: string) => Math.abs(dayjs(f).diff(s, 'd'));
 
 export const replaceDateReserved = (d: string) => d.replace(/\./g, ' / ');
+
+export const replyRecentRecordsContent = async () => {
+  const records = await getAllRecords();
+  const recentRecords = records.slice(-6);
+  const content: string[] = ['前六个月'];
+
+  for (let i = 0; i < recentRecords.length - 1; i++) {
+    const f = recentRecords[i];
+    const s = recentRecords[i + 1];
+    if (i === recentRecords.length - 1) {
+      content.push('', '距离上个月');
+    }
+    // eslint-disable-next-line no-useless-escape
+    content.push(`${replaceDateReserved(f.date)} \=> ${replaceDateReserved(s.date)} 距离 **${dateDiffByDay(f.date, s.date)}** 天`);
+  }
+
+  return content.join('\n');
+};

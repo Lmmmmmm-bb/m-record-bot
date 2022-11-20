@@ -4,7 +4,7 @@ import { Telegraf } from 'telegraf';
 import { MRecord } from './types';
 import { supabase } from './supa';
 import { botToken, SUPABASE_RECORDS, webhook } from './config';
-import { dateDiffByDay, formatRecords, getAllRecords, replaceDateReserved } from './utils';
+import { dateDiffByDay, formatRecords, getAllRecords, replaceDateReserved, replyRecentRecordsContent } from './utils';
 
 export const bot = new Telegraf(botToken);
 
@@ -27,16 +27,8 @@ bot.command('record', async (ctx) => {
     const newRecord: Omit<MRecord, 'id'> = { date: day().format('YYYY.MM.DD') };
     await supabase.from(SUPABASE_RECORDS).insert(newRecord);
 
-    const records = await getAllRecords();
-    const recentRecords = records.slice(-6);
-    const content: string[] = [];
-
-    for (let i = 0; i < recentRecords.length - 1; i++) {
-      const f = recentRecords[i];
-      const s = recentRecords[i + 1];
-      content.push(`${replaceDateReserved(f.date)} 到 ${replaceDateReserved(s.date)} 距离 **${dateDiffByDay(f.date, s.date)}** 天`);
-    }
-    ctx.replyWithMarkdownV2(content.join('\n'));
+    const reply = await replyRecentRecordsContent();
+    ctx.replyWithMarkdownV2(reply);
   } catch (error) {
     console.log(`添加数据出错 ${error.message}`);
     ctx.reply(`添加数据出错 ${error.message}`);
@@ -46,16 +38,9 @@ bot.command('record', async (ctx) => {
 // 最近五条数据
 bot.command('recent', async (ctx) => {
   try {
-    const records = await getAllRecords();
-    const recentRecords = records.slice(-6);
-    const content: string[] = [];
+    const reply = await replyRecentRecordsContent();
 
-    for (let i = 0; i < recentRecords.length - 1; i++) {
-      const f = recentRecords[i];
-      const s = recentRecords[i + 1];
-      content.push(`${replaceDateReserved(f.date)} 到 ${replaceDateReserved(s.date)} 距离 **${dateDiffByDay(f.date, s.date)}** 天`);
-    }
-    ctx.replyWithMarkdownV2(content.join('\n'));
+    ctx.replyWithMarkdownV2(reply);
   } catch (error) {
     console.log(`查找数据出错 ${error.message}`);
     ctx.reply(`查找数据出错 ${error.message}`);
