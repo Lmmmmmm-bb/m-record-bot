@@ -4,7 +4,7 @@ import { Telegraf } from 'telegraf';
 import { MRecord } from './types';
 import { supabase } from './supa';
 import { botToken, SUPABASE_RECORDS, webhook } from './config';
-import { dateDiffByDay, formatRecords, getAllRecords, replaceDateReserved, replyRecentRecordsContent } from './utils';
+import { formatRecords, getAllRecords, replyRecentRecordsContent } from './utils';
 
 export const bot = new Telegraf(botToken);
 
