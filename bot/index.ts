@@ -17,7 +17,7 @@ bot.help( (ctx) => {
     '/next \\=\\> 预计下一次时间',
     '/history \\=\\> 查看所有历史记录',
     '/recent \\=\\> 查看前六个与的记录',
-    '/record \\=\\> 记录今天并查看前六个月的记录',
+    '/record \\=\\> 记录今天并查看前六个月的记录'
   ];
 
   ctx.replyWithMarkdownV2(content.join('\n'));
@@ -28,8 +28,8 @@ bot.command('history', async (ctx) => {
     const records = await getAllRecords();
     ctx.replyWithMarkdownV2(formatRecords(records));
   } catch (error) {
-    console.log(`查找数据出错 ${error.message}`);
-    ctx.reply(`查找数据出错 ${error.message}`);
+    console.log('查找数据出错', error);
+    ctx.reply('查找数据出错');
   }
 });
 
@@ -41,8 +41,8 @@ bot.command('record', async (ctx) => {
     const reply = await replyRecentRecordsContent();
     ctx.replyWithMarkdownV2(reply);
   } catch (error) {
-    console.log(`添加数据出错 ${error.message}`);
-    ctx.reply(`添加数据出错 ${error.message}`);
+    console.log('添加数据出错', error);
+    ctx.reply('添加数据出错');
   }
 });
 
@@ -53,8 +53,8 @@ bot.command('recent', async (ctx) => {
 
     ctx.replyWithMarkdownV2(reply);
   } catch (error) {
-    console.log(`查找数据出错 ${error.message}`);
-    ctx.reply(`查找数据出错 ${error.message}`);
+    console.log('查找数据出错', error);
+    ctx.reply('查找数据出错');
   }
 });
 
@@ -66,8 +66,8 @@ bot.command('next', async (ctx) => {
 
     ctx.reply(`最后一次时间 ${day(lastRecordDate).format('YYYY.MM.DD')}\n预计下一次时间为 ${day(lastRecordDate).add(32, 'day').format('YYYY.MM.DD')}`);
   } catch (error) {
-    console.log(`获取数据出错 ${error.message}`);
-    ctx.reply(`获取数据出错 ${error.message}`);
+    console.log('获取数据出错', error);
+    ctx.reply('获取数据出错');
   }
 });
 
