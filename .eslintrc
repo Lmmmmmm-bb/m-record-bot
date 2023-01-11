@@ -20,6 +20,11 @@
     "prefer-destructuring": "warn",
     "prefer-template": "error",
     "no-multiple-empty-lines": ["error", { "max": 1 }],
-    "arrow-parens": "error"
+    "arrow-parens": "error",
+    "no-unused-expressions": "error",
+    "no-useless-return": "error",
+    "no-unused-vars": "error",
+    "no-unused-labels": "error",
+    "comma-dangle": "error"
   }
 }
