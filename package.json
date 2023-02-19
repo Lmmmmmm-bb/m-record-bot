@@ -20,7 +20,7 @@
     "telegraf": "^4.10.0"
   },
   "devDependencies": {
-    "@lmmmmmm/eslint-config": "0.0.1-beta.2",
+    "@lmmmmmm/eslint-config-ts": "0.0.1-beta.3",
     "@types/node": "^18.11.9",
     "@vercel/node": "^2.6.2",
     "eslint": "^8.27.0",
