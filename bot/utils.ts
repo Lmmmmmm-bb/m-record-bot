@@ -1,19 +1,19 @@
 import dayjs from 'dayjs';
 
-import { MRecord } from './types';
 import { supabase } from './supa';
+import type { MRecord } from './types';
 import { SUPABASE_RECORDS } from './config';
 
 export const formatRecords = (records: MRecord[]) => {
   const recordsDate = records.map((item) => item.date);
 
-  const markdown = records.length ?
-    recordsDate.map((item, index) => {
+  const markdown = records.length
+    ? recordsDate.map((item, index) => {
       const number = index + 1;
       const dateFormat = dayjs(item).format('YYYY / MM / DD');
       return `${number}: **${dateFormat}**`;
-    }).join('\n') :
-    '没有找到经期数据';
+    }).join('\n')
+    : '没有找到经期数据';
   return markdown;
 };
 
@@ -44,7 +44,6 @@ export const replyRecentRecordsContent = async () => {
     if (i === recentRecords.length - 1) {
       content.push('', '距离上个月');
     }
-    // eslint-disable-next-line no-useless-escape
     content.push(`${replaceDateReserved(f.date)} \\=\\> ${replaceDateReserved(s.date)} 距离 **${dateDiffByDay(f.date, s.date)}** 天`);
   }
 
