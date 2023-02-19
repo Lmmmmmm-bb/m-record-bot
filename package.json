@@ -1,14 +1,14 @@
 {
   "name": "m-record-bot",
   "version": "1.0.0",
-  "license": "MIT",
+  "description": "Record M.",
   "author": "_lmmmmmm",
+  "license": "MIT",
   "keywords": [
     "telegram-bot",
     "telegram",
     "vercel"
   ],
-  "description": "Record M.",
   "scripts": {
     "start": "vercel dev",
     "serve": "ngrok http 3000",
@@ -20,9 +20,8 @@
     "telegraf": "^4.10.0"
   },
   "devDependencies": {
+    "@lmmmmmm/eslint-config": "0.0.1-beta.2",
     "@types/node": "^18.11.9",
-    "@typescript-eslint/eslint-plugin": "^5.42.1",
-    "@typescript-eslint/parser": "^5.42.1",
     "@vercel/node": "^2.6.2",
     "eslint": "^8.27.0",
     "ngrok": "^4.3.3",

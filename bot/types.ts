@@ -1,4 +1,4 @@
 export interface MRecord {
-	id: number;
-	date: string;
+  id: number;
+  date: string;
 }
