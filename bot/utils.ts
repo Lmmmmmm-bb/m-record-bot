@@ -5,7 +5,7 @@ import type { MRecord } from './types';
 import { SUPABASE_RECORDS } from './config';
 
 export const formatRecords = (records: MRecord[]) => {
-  const recordsDate = records.map((item) => item.date);
+  const recordsDate = records.map(item => item.date);
 
   const markdown = records.length
     ? recordsDate.map((item, index) => {
