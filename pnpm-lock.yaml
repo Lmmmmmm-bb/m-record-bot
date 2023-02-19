@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@lmmmmmm/eslint-config': 0.0.1-beta.0
+  '@lmmmmmm/eslint-config': 0.0.1-beta.2
   '@supabase/supabase-js': ^2.1.0
   '@types/node': ^18.11.9
   '@vercel/node': ^2.6.2
@@ -18,7 +18,7 @@ dependencies:
   telegraf: registry.npmmirror.com/telegraf/4.10.0
 
 devDependencies:
-  '@lmmmmmm/eslint-config': 0.0.1-beta.0_rmayb2veg2btbq6mbmnyivgasy
+  '@lmmmmmm/eslint-config': 0.0.1-beta.2_rmayb2veg2btbq6mbmnyivgasy
   '@types/node': 18.11.9
   '@vercel/node': 2.6.2
   eslint: 8.27.0
@@ -206,8 +206,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@lmmmmmm/eslint-config/0.0.1-beta.0_rmayb2veg2btbq6mbmnyivgasy:
-    resolution: {integrity: sha512-VulB3sz75HPGmYIZRJ/wPs1b1rWEudMFM7YQNFr2E2kZLmlCSf/1lzLESKrjBBL8vqLaP2DULkwc03knq28ZmQ==}
+  /@lmmmmmm/eslint-config/0.0.1-beta.2_rmayb2veg2btbq6mbmnyivgasy:
+    resolution: {integrity: sha512-RQ8HyXcE2Hl0qm+R6Asjv1o6zPCOTVYBqdikmdLrvnp8mITPlbrJnSfz45IQsuNxjd2s7B/mtOoWNt5DeHtsQg==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
